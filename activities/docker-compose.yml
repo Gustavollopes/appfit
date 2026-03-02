@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: activities-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Volcano@2500 # Senha do super usuário
+      MYSQL_DATABASE: activities_db      # O Docker já vai criar esse banco vazio pra você!
+      MYSQL_USER: appfit_user            # Usuário da nossa aplicação
+      MYSQL_PASSWORD: Volcano@2500@##!    # Senha da nossa aplicação
+    ports:
+      - "3306:3306"                      # Mapeia a porta do Docker para o seu computador
+    volumes:
+      - mysql_data:/var/lib/mysql        # Salva os dados para não perder se o container desligar
+
+volumes:
+  mysql_data:
